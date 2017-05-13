@@ -1,0 +1,2 @@
+defmodule ProcessRegistry do
+end
