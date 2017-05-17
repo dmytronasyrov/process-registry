@@ -1,6 +1,8 @@
 defmodule ProcessRegistry.Server do
   use GenServer
 
+  alias ProcessRegistry.Registry
+
   # API
 
   def start_link(name: name), do: GenServer.start_link(__MODULE__, name, name: via_tuple(name))
@@ -10,7 +12,8 @@ defmodule ProcessRegistry.Server do
   # Callbacks
 
   def init(_) do
-    IO.inspect "Init Server"
+    IO.inspect "Server init"
+
     {:ok, nil}
   end
 

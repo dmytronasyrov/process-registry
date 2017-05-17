@@ -1,6 +1,8 @@
 defmodule ProcessRegistry.ServerSupervisor do
   use Supervisor
 
+  alias ProcessRegistry.Server
+
   # API
 
   def start_link, do: Supervisor.start_link(__MODULE__, nil, name: __MODULE__)
@@ -10,7 +12,7 @@ defmodule ProcessRegistry.ServerSupervisor do
   # Callbacks
 
   def init(_) do
-    IO.inspect "Init ServerSupervisor"
+    IO.inspect "ServerSupervisor init"
 
     [worker(Server, [])]
     |> supervise(strategy: :simple_one_for_one)
