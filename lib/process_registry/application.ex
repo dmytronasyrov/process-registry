@@ -1,7 +1,7 @@
 defmodule ProcessRegistry.Application do
   use Application
 
-  alias ProcessRegistry.{Registry, ServerSupervisor, PoolServer}
+  alias ProcessRegistry.{Registry, PoolServer}
 
   # API
 
@@ -11,7 +11,6 @@ defmodule ProcessRegistry.Application do
     children = [
       worker(Registry, []),
       worker(PoolServer, []),
-      #supervisor(ServerSupervisor, [])
     ]
     opts = [strategy: :one_for_one, name: ProcessRegistry.Supervisor]
     Supervisor.start_link(children, opts)

@@ -9,14 +9,6 @@ defmodule ProcessRegistry.Server do
 
   def whereis(name: name), do: Registry.whereis_name({:server, name})
 
-  # Callbacks
-
-  def init(_) do
-    IO.inspect "Server init"
-
-    {:ok, nil}
-  end
-
   # Private
 
   defp via_tuple(name), do: {:via, Registry, {:server, name}}
