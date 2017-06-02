@@ -1,4 +1,4 @@
-defmodule ProcessRegistry.Server do
+defmodule ProcessRegistry.Action.ActionServer do
   use GenServer
 
   alias ProcessRegistry.Registry

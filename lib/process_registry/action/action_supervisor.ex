@@ -1,7 +1,7 @@
-defmodule ProcessRegistry.ServerSupervisor do
+defmodule ProcessRegistry.Action.ActionSupervisor do
   use Supervisor
 
-  alias ProcessRegistry.Server
+  alias ProcessRegistry.Action.ActionServer
 
   # API
 
@@ -12,9 +12,7 @@ defmodule ProcessRegistry.ServerSupervisor do
   # Callbacks
 
   def init(_) do
-    IO.inspect "ServerSupervisor init"
-
-    [worker(Server, [])]
+    [worker(ActionServer, [])]
     |> supervise(strategy: :simple_one_for_one)
   end
 end
