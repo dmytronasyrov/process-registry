@@ -11,7 +11,11 @@ defmodule ProcessRegistry.Application do
     import Supervisor.Spec, warn: false
 
     opts = [strategy: :rest_for_one, name: ProcessRegistry.Supervisor]
-    [worker(Registry, []), worker(PoolServer, []), worker(ActionSupervisor, [])]
-    |> Supervisor.start_link(opts)
+    children = [
+      worker(Registry, []),
+      worker(PoolServer, []),
+      supervisor(ActionSupervisor, [[key_a: :value_a, key_b: :value_b]])
+    ]
+    Supervisor.start_link(children, opts)
   end
 end

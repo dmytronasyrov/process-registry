@@ -7,12 +7,12 @@ defmodule ProcessRegistry.Pool.PoolServer do
 
   def start_link, do: PoolSupervisor.start_link(@pool_size)
 
-  def call(worker_key, value) do
+  def call(worker_key: worker_key, value: value) do
     choose_worker(worker_key)
     |> PoolWorker.call(value)
   end
 
-  def cast(worker_key, value) do
+  def cast(worker_key: worker_key, value: value) do
     choose_worker(worker_key)
     |> PoolWorker.cast(value)
   end
