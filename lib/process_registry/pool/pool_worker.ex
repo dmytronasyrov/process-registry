@@ -1,7 +1,7 @@
 defmodule ProcessRegistry.Pool.PoolWorker do
   use GenServer
 
-  alias ProcessRegistry.Registry
+  alias ProcessRegistry.{Registry, RegistryETS}
 
   # API
 
@@ -33,5 +33,5 @@ defmodule ProcessRegistry.Pool.PoolWorker do
 
   # Private
 
-  defp via_tuple(worker_id), do: {:via, Registry, process_id(worker_id)}
+  defp via_tuple(worker_id), do: {:via, RegistryETS, process_id(worker_id)}
 end

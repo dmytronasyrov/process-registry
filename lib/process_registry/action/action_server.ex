@@ -1,7 +1,7 @@
 defmodule ProcessRegistry.Action.ActionServer do
   use GenServer
 
-  alias ProcessRegistry.Registry
+  alias ProcessRegistry.{Registry, RegistryETS}
 
   # API
 
@@ -11,7 +11,7 @@ defmodule ProcessRegistry.Action.ActionServer do
     GenServer.start_link(__MODULE__, value, name: via_tuple(name))
   end
 
-  def whereis(name: name), do: Registry.whereis_name({:action_server, name})
+  def whereis(name: name), do: RegistryETS.whereis_name({:action_server, name})
 
   # Callbacks
 
@@ -22,5 +22,5 @@ defmodule ProcessRegistry.Action.ActionServer do
 
   # Private
 
-  defp via_tuple(name), do: {:via, Registry, {:action_server, name}}
+  defp via_tuple(name), do: {:via, RegistryETS, {:action_server, name}}
 end
