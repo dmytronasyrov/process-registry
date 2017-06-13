@@ -17,6 +17,9 @@ defmodule ProcessRegistry.Application do
       worker(PoolServer, []),
       supervisor(ActionSupervisor, [[key_a: :value_a, key_b: :value_b]])
     ]
-    Supervisor.start_link(children, opts)
+    sup_tree = Supervisor.start_link(children, opts)
+
+    ProcessRegistry.Router.start_link
+    sup_tree
   end
 end

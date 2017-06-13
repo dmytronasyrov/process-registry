@@ -11,11 +11,18 @@ defmodule ProcessRegistry.Mixfile do
   end
 
   def application do
-    [extra_applications: [:logger],
-    mod: {ProcessRegistry.Application, []}]
+    [
+      extra_applications: [:logger],
+      mod: {ProcessRegistry.Application, []},
+      env: [port: 8888]
+    ]
   end
 
   defp deps do
-    []
+    [
+      {:gproc, "~> 0.6"},
+      {:cowboy, "~> 1.1"},
+      {:plug, "~> 1.3"}
+    ]
   end
 end

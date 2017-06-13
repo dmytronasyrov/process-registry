@@ -28,7 +28,7 @@ defmodule ProcessRegistry.RegistryETS do
   end
 
   defp unregister_name(key) do
-    GenServer.cast(__MODULE__, {:unregister_name, name})
+    GenServer.cast(__MODULE__, {:unregister_name, key})
   end
 
   # Callbacks
