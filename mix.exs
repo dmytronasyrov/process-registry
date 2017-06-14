@@ -22,7 +22,8 @@ defmodule ProcessRegistry.Mixfile do
     [
       {:gproc, "~> 0.6"},
       {:cowboy, "~> 1.1"},
-      {:plug, "~> 1.3"}
+      {:plug, "~> 1.3"},
+      {:socket, "~> 0.3"}
     ]
   end
 end

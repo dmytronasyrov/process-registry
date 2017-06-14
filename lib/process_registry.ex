@@ -11,8 +11,8 @@ defmodule ProcessRegistry do
     PoolServer.cast(worker_key: worker_id, value: value)
   end
 
-  ProcessRegistry.action_start "action id 1", "action value"
-  ProcessRegistry.action_start "action id 2", "action value"
+  # ProcessRegistry.action_start "action id 1", "action value"
+  # ProcessRegistry.action_start "action id 2", "action value"
   def action_start(action_id, value) do
     ActionSupervisor.start_child(name: action_id, value: value)
   end

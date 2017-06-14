@@ -4,6 +4,7 @@ defmodule ProcessRegistry.Application do
   alias ProcessRegistry.{Registry, RegistryETS}
   alias ProcessRegistry.Pool.PoolServer
   alias ProcessRegistry.Action.ActionSupervisor
+  alias ProcessRegistry.Pubsub.SocketListener
 
   # API
 
@@ -15,7 +16,8 @@ defmodule ProcessRegistry.Application do
       worker(Registry, []),
       worker(RegistryETS, []),
       worker(PoolServer, []),
-      supervisor(ActionSupervisor, [[key_a: :value_a, key_b: :value_b]])
+      supervisor(ActionSupervisor, [[key_a: :value_a, key_b: :value_b]]),
+      worker(SocketListener, [9999])
     ]
     sup_tree = Supervisor.start_link(children, opts)
 
