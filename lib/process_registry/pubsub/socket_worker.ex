@@ -11,7 +11,7 @@ defmodule ProcessRegistry.Pubsub.SocketWorker do
 
   def init(socket) do
     IO.inspect "Socket Worker init on: #{inspect socket}"
-    :gproc.reg({:p, :l, :something})
+    :gproc.reg({:p, :l, :socket_listener})
     {:ok, socket}
   end
 

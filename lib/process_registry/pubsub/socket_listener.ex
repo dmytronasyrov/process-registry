@@ -42,7 +42,7 @@ defmodule ProcessRegistry.Pubsub.SocketListener do
 
       {:ok, data} ->
         IO.inspect "Data received: #{inspect data}"
-        GenServer.cast({:via, :gproc, {:p, :l, :something}}, {:msg, data})
+        GenServer.cast({:via, :gproc, {:p, :l, :socket_listener}}, {:msg, data})
         received(listener_pid)
 
       {:error, :closed} ->
